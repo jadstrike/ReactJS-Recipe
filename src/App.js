@@ -1,25 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import Heading from "./Components/Heading/Heding";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./app.css";
+import React, { useState, useEffect } from "react";
+import Homepage from "./pages/Homepage/Homepage";
+import Detailpage from "./pages/Detailpage/Detailpage";
+import { RingLoader, CirleLoader, PacmanLoader } from "react-spinners";
+const App = () => {
+  const [loading, setLoading] = useState(false);
 
-function App() {
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mainWrapper">
+      {loading ? (
+        <div className="loader">
+          <PacmanLoader
+            className="loader"
+            size={40}
+            color={"#5FC8D8"}
+            loading={loading}
+          />
+        </div>
+      ) : (
+        <>
+          <Heading>Food Find with us</Heading>
+          <Router>
+            <Switch>
+              <Route path="/" exact component={Homepage}></Route>
+              <Route
+                path="/foodDetails/:id"
+                exact
+                component={Detailpage}
+              ></Route>
+            </Switch>
+          </Router>
+        </>
+      )}
     </div>
   );
-}
+};
 
 export default App;

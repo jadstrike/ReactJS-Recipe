@@ -1,0 +1,29 @@
+.cardWrapper:hover {
+  transform: scale(1.05);
+}
+
+.card-img {
+  border-radius: 15px;
+  width: 100%;
+  object-fit: cover;
+  height: 270px;
+}
+
+.cardTitle {
+  font-weight: 200;
+  padding: 20px 0;
+}
+
+.cardBtn {
+  padding: 15px 25px;
+  margin-bottom: 20px;
+  background-color: #a2d2ff;
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.cardBtn:hover {
+  color: pink;
+}
